@@ -1,0 +1,11 @@
+{ "signup" :{
+  "signinButton" : "'a[href=\"auth\"]",
+  "emailField" :"#email",
+  "passswordField" : "#password"
+},
+
+"billingDetails" :{
+
+}
+
+}
