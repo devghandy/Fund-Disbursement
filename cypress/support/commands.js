@@ -1,12 +1,4 @@
-
-Cypress.Commands.add('login', () => {
-  cy.visit('/');
-  cy.get('#email').type('arca@yopmail.com');
-  cy.get('#password').type('lulu');
-  cy.get('[name="signin"]').click();
-  cy.url().should('include', '/Dashboard/Dash'); // optional check
-});
-
+import 'cypress-file-upload';
 
     // ***********************************************
     // Visit https://on.cypress.io/custom-commands to
@@ -14,9 +6,14 @@ Cypress.Commands.add('login', () => {
     // ***********************************************
     //
     //
-    // -- This is a parent command --
-    // Cypress.Commands.add('login', (email, password) => { })
-    //
+    
+    Cypress.Commands.add('login', ()=>{
+      cy.visit('/')
+      cy.get('#email').type('arca@yopmail.com')
+      cy.get('#password').type('lulu')
+      cy.get('[name="signin"]').click()
+    })
+    
     //
     // -- This is a child command --
     // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
@@ -34,4 +31,5 @@ Cypress.Commands.add('login', () => {
           return false
         })
         cy.visit('/')
+        cy.login()
       })

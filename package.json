@@ -7,7 +7,8 @@
     "test": "npx cypress run"
   },
   "devDependencies": {
-    "cypress": "latest"
+    "cypress": "latest",
+    "cypress-file-upload": "^5.0.8"
   },
   "dependencies": {
     "cypress-fill-command": "^1.0.2"

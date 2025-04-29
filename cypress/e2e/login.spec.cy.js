@@ -1,27 +1,28 @@
-
-    describe('Login  Test', () => {
-        it.only('valid Login Test', () => {
-            cy.get('a[href="auth"]').click()
+ describe('Login  Test', () => {
+        it('valid Login Test', () => {
             cy.get('#email').fill('arca@yopmail.com')
             cy.get('#password').fill('lulu')
             cy.get('[name="signin"]').click()
-            cy.get('[href="../Billing/BillingAccount"]').click()
-            cy.get('#btnProcess').should('be.visible').click()
+            cy.contains('Welcome Gandy Signature').should('be.visible');
+            cy.get('[href="../Auth"]').click()
+        });
+        it('should not allow login with wrong password', () => {
+            cy.get('#email').fill('arca@yopmail.com')
+            cy.get('#password').fill('wrongpassword')
+            cy.get('[name="signin"]').click()
+            cy.contains('Invalid Credential Supplied!!!').should('be.visible')
         });
 
-        it('should successfully add a billing account', ()=>{
-            cy.get('#btnProcess').should('be.visible').click()
-
+        it('should not allow login with invalid email format', () => {
+            cy.get('#email').fill('invalid-email')
+            cy.get('#password').fill('lulu')
+            cy.get('[name="signin"]').click()       
+            cy.contains('Invalid Credential Supplied!!!').should('be.visible'); 
+        });
+       
 })
-
-        it('should not allow login with wrong password', () => {
-           cy.get('a[href="auth"]').click()
-           cy.get('#email').fill('arca@yopmail.com')
-           cy.get('#password').fill('wrongpassword')
-           cy.get('[name="signin"]').click()
-           cy.contains('Invalid Credential Supplied!!!').should('be.visible')
-});
+        
 
       
-    });
+  
             
